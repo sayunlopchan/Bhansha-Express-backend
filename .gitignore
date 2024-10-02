@@ -27,6 +27,6 @@ coverage/
 
 
 # future update
-productRoutes.js
-Product.js
-productController.js
+routes/productRoutes.js
+controllers/Product.js
+controllers/productController.js
