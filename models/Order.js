@@ -1,5 +1,3 @@
-// models/Order.js
-
 const mongoose = require('mongoose');
 
 const OrderSchema = new mongoose.Schema({
@@ -17,7 +15,12 @@ const OrderSchema = new mongoose.Schema({
     email: { type: String, required: true },
     phoneNumber: { type: String, required: true },
     location: { type: String, required: true },
+    sentDate: { type: Date, default: Date.now }
   },
+  status: { type: String, enum: ['Not Set', 'Cooking', 'On Delivery', 'Delivery Complete', 'Order Cancel'], default: 'Not Set' },
+  paymentMethod: { type: String, enum: ['Cash on Delivery', 'Takeout'], required: true },
+  takeoutLocation: { type: String, default: null },
+  // Add sentDate field
 }, { timestamps: true });
 
 module.exports = mongoose.model('Order', OrderSchema);

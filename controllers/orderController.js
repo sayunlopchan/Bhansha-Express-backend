@@ -1,10 +1,9 @@
-// controllers/orderController.js
 const Order = require('../models/Order');
 
 // Create a new order
 exports.createOrder = async (req, res) => {
   try {
-    const { items, totalPrice, user } = req.body;
+    const { items, totalPrice, user, paymentMethod, takeoutLocation } = req.body;
 
     // Validate order data
     if (!items || !Array.isArray(items) || items.length === 0) {
@@ -19,8 +18,8 @@ exports.createOrder = async (req, res) => {
       return res.status(400).json({ message: 'User data is incomplete.' });
     }
 
-    // Create and save new order
-    const newOrder = new Order({ items, totalPrice, user });
+    // Create and save new order, including payment method and takeout location
+    const newOrder = new Order({ items, totalPrice, user, paymentMethod, takeoutLocation });
     await newOrder.save();
 
     res.status(201).json({ message: 'Order created successfully', order: newOrder });
@@ -30,10 +29,10 @@ exports.createOrder = async (req, res) => {
   }
 };
 
-// Get all orders
-exports.getOrders = async (req, res) => {
+// Retrieve all orders (admin only)
+exports.getAllOrders = async (req, res) => {
   try {
-    const orders = await Order.find(); // Fetch all orders from the database
+    const orders = await Order.find();
     res.status(200).json(orders);
   } catch (error) {
     console.error(error);
@@ -41,16 +40,14 @@ exports.getOrders = async (req, res) => {
   }
 };
 
-// Get order by ID
+// Retrieve a specific order by ID
 exports.getOrderById = async (req, res) => {
+  const { id } = req.params;
   try {
-    const { id } = req.params; // Extract ID from request parameters
-    const order = await Order.findById(id); // Fetch order by ID
-
+    const order = await Order.findById(id);
     if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
+      return res.status(404).json({ message: 'Order not found.' });
     }
-
     res.status(200).json(order);
   } catch (error) {
     console.error(error);
@@ -58,42 +55,33 @@ exports.getOrderById = async (req, res) => {
   }
 };
 
-// Edit an existing order
-exports.editOrder = async (req, res) => {
+// Update an order status (admin only)
+exports.updateOrderStatus = async (req, res) => {
+  const { id } = req.params;
+  const { status } = req.body;
+
   try {
-    const { id } = req.params;
-    const updates = req.body; // Get the updates from the request body
-
-    // Validate updates
-    if (!updates) {
-      return res.status(400).json({ message: 'No updates provided.' });
+    const updatedOrder = await Order.findByIdAndUpdate(id, { status }, { new: true });
+    if (!updatedOrder) {
+      return res.status(404).json({ message: 'Order not found.' });
     }
-
-    const order = await Order.findByIdAndUpdate(id, updates, { new: true });
-
-    if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
-    }
-
-    res.status(200).json({ message: 'Order updated successfully', order });
+    res.status(200).json({ message: 'Order status updated successfully.', order: updatedOrder });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-// Remove an order
-exports.removeOrder = async (req, res) => {
+// Delete an order (admin only)
+exports.deleteOrder = async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
-
-    const order = await Order.findByIdAndDelete(id);
-
-    if (!order) {
-      return res.status(404).json({ message: 'Order not found' });
+    const deletedOrder = await Order.findByIdAndDelete(id);
+    if (!deletedOrder) {
+      return res.status(404).json({ message: 'Order not found.' });
     }
-
-    res.status(200).json({ message: 'Order removed successfully' });
+    res.status(200).json({ message: 'Order deleted successfully.' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
