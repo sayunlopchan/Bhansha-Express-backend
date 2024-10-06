@@ -24,6 +24,7 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 
+
 // Error handling middleware
 app.use(errorHandler);
 
