@@ -18,8 +18,11 @@ exports.createOrder = async (req, res) => {
       return res.status(400).json({ message: 'User data is incomplete.' });
     }
 
-    // Create and save new order, including payment method and takeout location
-    const newOrder = new Order({ items, totalPrice, user, paymentMethod, takeoutLocation });
+    // Generate unique orderId with "BE" prefix followed by a random 8-digit number
+    const orderId = `BE${Math.floor(10000000 + Math.random() * 90000000)}`;
+
+    // Create and save new order
+    const newOrder = new Order({ orderId, items, totalPrice, user, paymentMethod, takeoutLocation });
     await newOrder.save();
 
     res.status(201).json({ message: 'Order created successfully', order: newOrder });
@@ -32,7 +35,7 @@ exports.createOrder = async (req, res) => {
 // Retrieve all orders (admin only)
 exports.getAllOrders = async (req, res) => {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().sort({ createdAt: - 1 });
     res.status(200).json(orders);
   } catch (error) {
     console.error(error);

@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-
-
 const errorHandler = require('./middleware/errorHandler');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
@@ -23,7 +21,6 @@ mongoose.connect(process.env.MONGO_URI)
 // Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
-
 
 // Error handling middleware
 app.use(errorHandler);
