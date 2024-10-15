@@ -25,8 +25,3 @@ Thumbs.db
 # Coverage reports
 coverage/
 
-
-# future update
-routes/productRoutes.js
-controllers/Product.js
-controllers/productController.js
