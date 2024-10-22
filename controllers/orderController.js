@@ -1,3 +1,4 @@
+const sendOrderEmail = require('../utils/sendEmail');
 const Order = require('../models/Order');
 
 // Create a new order
@@ -25,21 +26,24 @@ exports.createOrder = async (req, res) => {
     const newOrder = new Order({ orderId, items, totalPrice, user, paymentMethod, takeoutLocation });
     await newOrder.save();
 
+    // Send email notifications to customer and admin
+    await sendOrderEmail(user.email, { orderId, items, totalPrice, paymentMethod, takeoutLocation });
+
     res.status(201).json({ message: 'Order created successfully', order: newOrder });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Error creating order:", error.message || error);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 
 // Retrieve all orders (admin only)
 exports.getAllOrders = async (req, res) => {
   try {
-    const orders = await Order.find().sort({ createdAt: - 1 });
+    const orders = await Order.find().sort({ createdAt: -1 });
     res.status(200).json(orders);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Error retrieving orders:", error.message || error);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 
@@ -53,8 +57,8 @@ exports.getOrderById = async (req, res) => {
     }
     res.status(200).json(order);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Error retrieving specific order:", error.message || error);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 
@@ -70,8 +74,8 @@ exports.updateOrderStatus = async (req, res) => {
     }
     res.status(200).json({ message: 'Order status updated successfully.', order: updatedOrder });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Error updating order status:", error.message || error);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };
 
@@ -86,7 +90,7 @@ exports.deleteOrder = async (req, res) => {
     }
     res.status(200).json({ message: 'Order deleted successfully.' });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
+    console.error("Error deleting order:", error.message || error);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 };

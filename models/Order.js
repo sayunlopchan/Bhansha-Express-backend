@@ -18,9 +18,30 @@ const OrderSchema = new mongoose.Schema({
     location: { type: String, required: true },
     sentDate: { type: Date, default: Date.now },
   },
-  status: { type: String, enum: ['Not Set', 'Cooking', 'On Delivery', 'Delivery Complete', 'Order Cancel'], default: 'Not Set' },
-  paymentMethod: { type: String, enum: ['Cash on Delivery', 'Takeout'], required: true },
-  takeoutLocation: { type: String, default: null },
+  status: {
+    type: String,
+    enum: [
+      'Not Set',
+      'Cooking',
+      'On Delivery',
+      'Delivery Complete',
+      'Order Cancel'
+    ],
+    default: 'Not Set'
+  },
+  paymentMethod: {
+    type: String,
+    enum: [
+      'Cash on Delivery',
+      'Takeout'
+    ],
+    required: true
+
+  },
+  takeoutLocation: {
+    type: String,
+    default: null
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model('Order', OrderSchema);

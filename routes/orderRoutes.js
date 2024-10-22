@@ -19,7 +19,7 @@ router.get('/', getAllOrders);
 router.get('/:id', getOrderById);
 
 // Update an existing order status
-router.put('/:id', updateOrderStatus); // This is your update status endpoint
+router.put('/:id', updateOrderStatus);
 
 // Remove an order (admin only)
 router.delete('/:id', deleteOrder);
