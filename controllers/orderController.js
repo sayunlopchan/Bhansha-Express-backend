@@ -4,7 +4,7 @@ const Order = require('../models/Order');
 // Create a new order
 exports.createOrder = async (req, res) => {
   try {
-    const { items, totalPrice, user, paymentMethod, takeoutLocation } = req.body;
+    const { items, totalPrice, user, paymentMethod } = req.body;
 
     // Validate order data
     if (!items || !Array.isArray(items) || items.length === 0) {
@@ -23,11 +23,11 @@ exports.createOrder = async (req, res) => {
     const orderId = `BE${Math.floor(10000000 + Math.random() * 90000000)}`;
 
     // Create and save new order
-    const newOrder = new Order({ orderId, items, totalPrice, user, paymentMethod, takeoutLocation });
+    const newOrder = new Order({ orderId, items, totalPrice, user, paymentMethod });
     await newOrder.save();
 
     // Send email notifications to customer and admin
-    await sendOrderEmail(user.email, { orderId, items, totalPrice, paymentMethod, takeoutLocation });
+    await sendOrderEmail(user.email, { orderId, items, totalPrice, paymentMethod });
 
     res.status(201).json({ message: 'Order created successfully', order: newOrder });
   } catch (error) {

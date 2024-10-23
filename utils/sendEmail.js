@@ -2,46 +2,126 @@ const nodemailer = require('nodemailer');
 
 // Utility function to format order details
 const formatOrderDetails = (orderData) => {
-  const { orderId, items, totalPrice, paymentMethod, takeoutLocation } = orderData;
+  const { orderId, items, totalPrice, paymentMethod, user } = orderData;
+
+
 
   // Create a formatted string for the items
-  const itemDetails = items
-    .map(item => `${item.title} (Qty: ${item.quantity}) - Rs. ${item.price * item.quantity}`)
-    .join('<br>'); // Using <br> for line breaks in the email
+  const itemDetails = `
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left; padding: 8px; border: 1px solid black;">Item</th>
+        <th style="text-align: left; padding: 8px; border: 1px solid black;">Quantity</th>
+        <th style="text-align: left; padding: 8px; border: 1px solid black;">Price (Rs.)</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${items
+      .map(
+        item => `
+            <tr>
+              <td style="padding: 8px; border: 1px solid black;">${item.title}</td>
+              <td style="padding: 8px; border: 1px solid black;">${item.quantity}</td>
+              <td style="padding: 8px; border: 1px solid black;">Rs. ${item.price * item.quantity}</td>
+            </tr>
+          `
+      )
+      .join('')}
+    </tbody>
+  </table>
+`;
+
+
 
   // Construct the final order details string for admin
   const orderDetailsForAdmin = `
-  <h1 style="color:red;">A new order has been placed.</h1>
-  <br>
-  <strong>Order ID:</strong> ${orderId} 
-  <br>
-  <strong>Payment Method:</strong> <span style="">${paymentMethod}</span>
-  <br>
-  <strong>Total Price:</strong> Rs.${totalPrice}
-  <br>
-  ${takeoutLocation ? `<strong>Takeout Location:</strong> ${takeoutLocation}
-  <br>` :
-      ''}
-  <strong>Order Items:</strong>
-  <br>
-  ${itemDetails}
-  <br />
-  
-  `;
+  <div style="font-family: Arial, sans-serif; padding: 20px;">
+    <h1 style="color:red;">A new order has been placed.</h1>
+    
+    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+      <tr>
+        <th style="text-align: left; padding: 8px; border: 1px solid black;">Order ID</th>
+        <td style="padding: 8px; border: 1px solid black;">${orderId}</td>
+      </tr>
+      <tr>
+        <th style="text-align: left; padding: 8px; border: 1px solid black;">Payment Method</th>
+        <td style="padding: 8px; border: 1px solid black;">${paymentMethod}</td>
+      </tr>
+      <tr>
+        <th style="text-align: left; padding: 8px; border: 1px solid black;">Order Items</th>
+        <td style="padding: 8px; border: 1px solid black;">${itemDetails}</td>
+      </tr>
+      <tr>
+        <th style="text-align: left; padding: 8px; border: 1px solid black;">Total Price</th>
+        <td style="padding: 8px; border: 1px solid black;">Rs. ${totalPrice}</td>
+      </tr>
+    </table>
+    
+    <br />
+    <p>Thank you for reviewing the order.</p>
+  </div>
+`;
+
 
   // Construct the final order details string for user
   const orderDetailsForUser = `
-     <h1 style="color:red;">Your order has been placed.</h1>
-    <br>
-    <strong>Order ID:</strong> ${orderId}<br>
-    <strong>Payment Method:</strong> ${paymentMethod}<br>
-    <strong>Total Price:</strong> Rs. ${totalPrice}<br>
-    ${takeoutLocation ? `<strong>Takeout Location:</strong> ${takeoutLocation}<br>` : ''}
-    <strong>Order Items:</strong><br>
-    ${itemDetails}<br>
-    Thank you for your purchase.<br>
-    #BhanshaExpress
-  `;
+  <div style="padding: 20px; font-family: Arial, sans-serif;">
+  
+  <h1 style="color:red;">Your order has been placed.</h1>
+  
+  <table style="width: 100%; border-collapse: collapse;">
+    <tr>
+      <th style="text-align: left; padding: 8px; border: 1px solid black;">Order ID</th>
+      <td style="padding: 8px; border: 1px solid black;">${orderId}</td>
+    </tr>
+    <tr>
+      <th style="text-align: left; padding: 8px; border: 1px solid black;">Payment Method</th>
+      <td style="padding: 8px; border: 1px solid black;">${paymentMethod}</td>
+    </tr>
+    <tr>
+      <th style="text-align: left; padding: 8px; border: 1px solid black;">Order Items</th>
+      <td style="padding: 8px; border: 1px solid black;">${itemDetails}</td>
+    </tr>
+      <tr>
+      <th style="text-align: left; padding: 8px; border: 1px solid black;">Total Price</th>
+      <td style="padding: 8px; border: 1px solid black;">Rs. ${totalPrice}</td>
+    </tr>
+  </table>
+
+  <p>Thank you for your purchase.</p>
+
+  <ul>
+
+  <li>
+  <strong>Follow:</strong>
+  <a href="https://www.facebook.com/BhanshaExpress">
+  <i> BhanshaExpress on Facebook</i>
+  </a>
+  </li>
+
+  <li>
+  <strong>Follow:</strong>
+  <a href="https://www.instagram.com/BhanshaExpress">
+  <i>BhanshaExpress on Instagram</i>
+  </a>
+  </li>
+
+  <li>
+  <strong>Follow:</strong>
+  <a href="https://wa.me/+9779867247262">
+  <i>BhanshaExpress on Whatsapp</i>
+  </a>
+  </li>
+
+  </ul>
+  
+
+  <br />
+  <a href="https://bhanshaexpress.com"><i>Visit www.bhanshaexpress.com</i></a>
+  
+  </div>
+`;
 
   return { orderDetailsForAdmin: orderDetailsForAdmin.trim(), orderDetailsForUser: orderDetailsForUser.trim() };
 };
