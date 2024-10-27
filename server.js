@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const errorHandler = require('./middleware/errorHandler');
 const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const contactRoutes = require('./routes/contact');
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ mongoose.connect(process.env.MONGO_URI)
 // Use routes
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api', contactRoutes);
 
 
 app.get('/', (req, res) => {
