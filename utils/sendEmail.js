@@ -34,7 +34,7 @@ const formatOrderDetails = (orderData) => {
   const orderDetailsForUser = `
   <div style="padding: 20px; font-family: Arial, sans-serif;">
   
-    <h1 style="color:red;">Your order has been placed.</h1>
+    <h1 style="color: red; font-size: 16px;">Your order has been placed.</h1>
 
     <table style="width: 100%; border-collapse: collapse;">
       <tr>
@@ -67,10 +67,12 @@ const formatOrderDetails = (orderData) => {
 
     <!-- Banner Image -->
     <div style="margin-top: 20px; text-align: center;">
-      <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8" 
-           alt="Thank You Banner" 
-           style="max-width: 100%; height: auto;" />
+    <a href="https://bhanshaexpress.com">
+    <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8" 
+    alt="Thank You Banner" 
+    style="max-width: 100%; height: auto;" />
     </div>
+    </a>
   </div>
 `;
 
