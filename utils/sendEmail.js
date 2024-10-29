@@ -33,8 +33,13 @@ const formatOrderDetails = (orderData) => {
   // Construct the final order details string for the user with the banner image
   const orderDetailsForUser = `
   <div style="padding: 20px; font-family: Arial, sans-serif;">
-  
-    <h1 style="color: red; font-size: 16px;">Your order has been placed.</h1>
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+  <h1 style="color: red; font-size: 16px;">Your order has been placed.</h1>
+  <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8"
+    alt="Bhansha Express Logo" 
+    style="max-width: 100px; height: 100px;" />
+</div>
+
 
     <table style="width: 100%; border-collapse: collapse;">
       <tr>
@@ -68,9 +73,9 @@ const formatOrderDetails = (orderData) => {
     <!-- Banner Image -->
     <div style="margin-top: 20px; text-align: center;">
     <a href="https://bhanshaexpress.com">
-    <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8" 
+    <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8"
     alt="Thank You Banner" 
-    style="max-width: 100%; height: auto;" />
+    style="max-width: 100%; height: 100px;" />
     </div>
     </a>
   </div>
