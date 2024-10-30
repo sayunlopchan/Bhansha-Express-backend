@@ -1,3 +1,7 @@
+import * as Path from "../constant/path"
+
+
+
 const orderConfirmationTemplate = (user, orderId, items, totalPrice, paymentMethod) => `
   <h1>Thank you for your order, ${user.firstName} ${user.lastName}!</h1>
   <p>Your order ID is <strong>${orderId}</strong>.</p>
@@ -16,24 +20,24 @@ const orderConfirmationTemplate = (user, orderId, items, totalPrice, paymentMeth
         <h5 style="text-align: center; margin: 0px;">Connect with us !!</h5>
 
         <div style="margin-top: 10px; text-align: center;">
-          <a href="https://www.instagram.com/bhanshaexpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/67211686cf6136f01241147c" alt="instagram"
+          <a href=${Path.INSTAGRAM} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.INSTAGRAM_ICON} alt="instagram"
               width="25px">
           </a>
-          <a href="https://www.facebook.com/BhanshaExpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672115e4cf6136f01241147a" alt="facebook"
+          <a href=${Path.FACEBOOK} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.FACEBOOK_ICON} alt="facebook"
               width="25px">
           </a>
-          <a href="https://wa.me/+9779867247262" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672116a5cf6136f01241147e" alt="whatsapp"
+          <a href=${Path.WHATSAPP} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.WHATSAPP_ICON} alt="whatsapp"
               width="25px">
           </a>
         </div>
       </div>
 
 
-      <a href="https://www.bhanshaexpress.com">
-        <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8"
+      <a href=${Path.BASEURL}>
+        <img src=${Path.BANNER}
           alt="bhansha express offer banner" width="100%" height="100%" style="border-radius: 20px;">
       </a>
 
@@ -64,24 +68,14 @@ const adminOrderNotificationTemplate = (user, orderId, items, totalPrice, paymen
 
 const onCookingTemplate = (user, orderId, paymentMethod, totalPrice) => `
 
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-  </head>
-
-  <body
-    style="font-family: Arial, sans-serif; background-color: white;  max-width: 600px; min-width: 300px; margin: auto; padding: 10px;">
+  <div style="font-family: Arial, sans-serif; background-color: white;  max-width: 600px; min-width: 300px; margin: auto; padding: 10px;">
 
 
     <div style="margin: auto; padding: 10px; border-radius: 10px; background-color: #ECF1FB; text-align: center;">
 
       <div
         style="height: 100px; width: 100px; display: flex; justify-content: center; align-items: center; margin: auto; overflow: hidden; border-radius: 100%;">
-        <img src="https://bhansha-express-backend.onrender.com/api/image/67210b13cf6136f012411478"
+        <img src=${Path.LOGO}
           alt="bhansha express logo" width="100%" height="100%" style="object-fit: cover;">
       </div>
 
@@ -95,7 +89,7 @@ const onCookingTemplate = (user, orderId, paymentMethod, totalPrice) => `
     <div style=" margin: auto; font-size: small; ">
       <div style=" text-align: center; margin: auto; margin-top: 20px; ">
         <span style="text-align: center;">
-          <img src="https://bhansha-express-backend.onrender.com/api/image/6720af404d23b0f2c87b7e5e"
+          <img src=${Path.ORDERCONFIRM}
             alt="Order Confirmed" style="height: 30px; width: 30px;" />
           <p style="color: blue;">Order Confirmed</p>
         </span>
@@ -103,7 +97,7 @@ const onCookingTemplate = (user, orderId, paymentMethod, totalPrice) => `
         <p>&</p>
 
         <span style="text-align: center;">
-          <img src="https://bhansha-express-backend.onrender.com/api/image/6720af474d23b0f2c87b7e60" alt="Ready to Cook"
+          <img src=${Path.READYTOCOOK} alt="Ready to Cook"
             style="height: 30px; width: 30px;" />
           <p style="color: red;">Ready to Cook</p>
         </span>
@@ -173,7 +167,7 @@ const onCookingTemplate = (user, orderId, paymentMethod, totalPrice) => `
       <div style="margin-top: 20px;">
         <h5 style="margin: 0px;">Takeout Address</h5>
         <hr>
-        <p style="margin: 0px; font-size: smaller;">Loaction: xxx</p>
+        <p style="margin: 0px; font-size: smaller;">Loaction: <a href=${Path.GOOGLEMAP}>${Path.LOCATION}</a></p>
       </div>
 
       <div style="margin-top: 20px;">
@@ -191,24 +185,24 @@ const onCookingTemplate = (user, orderId, paymentMethod, totalPrice) => `
         <h5 style="text-align: center; margin: 0px;">Connect with us !!</h5>
 
         <div style="margin-top: 10px; text-align: center;">
-          <a href="https://www.instagram.com/bhanshaexpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/67211686cf6136f01241147c" alt="instagram"
+          <a href=${Path.INSTAGRAM} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.INSTAGRAM_ICON} alt="instagram"
               width="25px">
           </a>
-          <a href="https://www.facebook.com/BhanshaExpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672115e4cf6136f01241147a" alt="facebook"
+          <a href=${Path.FACEBOOK} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.FACEBOOK_ICON} alt="facebook"
               width="25px">
           </a>
-          <a href="https://wa.me/+9779867247262" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672116a5cf6136f01241147e" alt="whatsapp"
+          <a href=${Path.WHATSAPP} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.WHATSAPP_ICON} alt="whatsapp"
               width="25px">
           </a>
         </div>
       </div>
 
 
-      <a href="https://www.bhanshaexpress.com">
-        <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8"
+      <a href=${Path.BASEURL}>
+        <img src=${Path.BANNER}
           alt="bhansha express offer banner" width="100%" height="100%" style="border-radius: 20px;">
       </a>
 
@@ -216,20 +210,16 @@ const onCookingTemplate = (user, orderId, paymentMethod, totalPrice) => `
 
     </div>
 
-    <footer>
+    <div>
       <p style="font-size: smaller; text-align: center; color: #888;">© 2024 All Rights Reserved.</p>
-    </footer>
+    </div>
 
-  </body>
-
-
-</html>
-
+  </div>
 
 `;
 
 const shippedTemplate = (user, orderId) => `
-<img src="https://bhansha-express-backend.onrender.com/api/image/6721d2697170de730f4be6df" alt="shipped" width:100px; height:100px />
+<img src=${Path.LOGO} alt="shipped" width:100px; height:100px />
   <h1>Your Order Has Been Shipped!</h1>
   <p>Dear ${user.firstName},</p>
   <p>Your order ID ${orderId} has been shipped. Thank you for shopping with us!</p>
@@ -240,24 +230,24 @@ const shippedTemplate = (user, orderId) => `
         <h5 style="text-align: center; margin: 0px;">Connect with us !!</h5>
 
         <div style="margin-top: 10px; text-align: center;">
-          <a href="https://www.instagram.com/bhanshaexpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/67211686cf6136f01241147c" alt="instagram"
+          <a href=${Path.INSTAGRAM} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.INSTAGRAM_ICON} alt="instagram"
               width="25px">
           </a>
-          <a href="https://www.facebook.com/BhanshaExpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672115e4cf6136f01241147a" alt="facebook"
+          <a href=${Path.FACEBOOK} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.FACEBOOK_ICON} alt="facebook"
               width="25px">
           </a>
-          <a href="https://wa.me/+9779867247262" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672116a5cf6136f01241147e" alt="whatsapp"
+          <a href=${Path.WHATSAPP} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.WHATSAPP_ICON} alt="whatsapp"
               width="25px">
           </a>
         </div>
       </div>
 
 
-      <a href="https://www.bhanshaexpress.com">
-        <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8"
+      <a href=${Path.BASEURL}>
+        <img src=${Path.BANNER}
           alt="bhansha express offer banner" width="100%" height="100%" style="border-radius: 20px;">
       </a>
 
@@ -271,7 +261,7 @@ const shippedTemplate = (user, orderId) => `
 `;
 
 const deliveredTemplate = (user, orderId) => `
-<img src="https://bhansha-express-backend.onrender.com/api/image/6721d3cc71209ca14a920d5d" alt="delivery complete" width:100px; height:100px/>
+<img src=${Path.STATUS_DELIVERED} alt="delivery complete" width:100px; height:100px/>
   <h1>Your Order Has Been Delivered!</h1>
   <p>Dear ${user.firstName},</p>
   <p>Your order ID ${orderId} has been delivered successfully. We hope you enjoy your purchase!</p>
@@ -282,24 +272,24 @@ const deliveredTemplate = (user, orderId) => `
         <h5 style="text-align: center; margin: 0px;">Connect with us !!</h5>
 
         <div style="margin-top: 10px; text-align: center;">
-          <a href="https://www.instagram.com/bhanshaexpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/67211686cf6136f01241147c" alt="instagram"
+          <a href=${Path.INSTAGRAM} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.INSTAGRAM_ICON} alt="instagram"
               width="25px">
           </a>
-          <a href="https://www.facebook.com/BhanshaExpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672115e4cf6136f01241147a" alt="facebook"
+          <a href=${Path.FACEBOOK} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.FACEBOOK_ICON} alt="facebook"
               width="25px">
           </a>
-          <a href="https://wa.me/+9779867247262" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672116a5cf6136f01241147e" alt="whatsapp"
+          <a href=${Path.WHATSAPP} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.WHATSAPP_ICON} alt="whatsapp"
               width="25px">
           </a>
         </div>
       </div>
 
 
-      <a href="https://www.bhanshaexpress.com">
-        <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8"
+      <a href=${Path.BASEURL}>
+        <img src=${Path.BANNER}
           alt="bhansha express offer banner" width="100%" height="100%" style="border-radius: 20px;">
       </a>
 
@@ -313,7 +303,7 @@ const deliveredTemplate = (user, orderId) => `
 `;
 
 const canceledTemplate = (user) => `
-<img src="https://bhansha-express-backend.onrender.com/api/image/6721d2237170de730f4be6c8" alt="cancel" width:100px; height:100px/>
+<img src=${Path.STATUS_CANCELED}" alt="cancel" width:100px; height:100px/>
   <h1>Your Order Has Been Canceled</h1>
   <p>Dear ${user.firstName},</p>
   <p>Your order has been canceled. If you have any questions, please contact our support team.</p>
@@ -324,24 +314,24 @@ const canceledTemplate = (user) => `
         <h5 style="text-align: center; margin: 0px;">Connect with us !!</h5>
 
         <div style="margin-top: 10px; text-align: center;">
-          <a href="https://www.instagram.com/bhanshaexpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/67211686cf6136f01241147c" alt="instagram"
+          <a href=${Path.INSTAGRAM} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.INSTAGRAM_ICON} alt="instagram"
               width="25px">
           </a>
-          <a href="https://www.facebook.com/BhanshaExpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672115e4cf6136f01241147a" alt="facebook"
+          <a href=${Path.FACEBOOK} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.FACEBOOK_ICON} alt="facebook"
               width="25px">
           </a>
-          <a href="https://wa.me/+9779867247262" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672116a5cf6136f01241147e" alt="whatsapp"
+          <a href=${Path.WHATSAPP} style="display: inline-block; margin: 0 10px;">
+            <img src=${Path.WHATSAPP_ICON} alt="whatsapp"
               width="25px">
           </a>
         </div>
       </div>
 
 
-      <a href="https://www.bhanshaexpress.com">
-        <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8"
+      <a href=${Path.BASEURL}>
+        <img src=${Path.BANNER}
           alt="bhansha express offer banner" width="100%" height="100%" style="border-radius: 20px;">
       </a>
 
