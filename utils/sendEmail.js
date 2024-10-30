@@ -124,7 +124,7 @@ const formatOrderDetails = (orderData) => {
       <div style="margin-top: 20px;">
         <h5 style="margin: 0px;">Takeout Address</h5>
         <hr>
-        <p style="margin: 0px; font-size: smaller;">Loaction: xxx</p>
+        <p style="margin: 0px; font-size: smaller;">Loaction: <a href="https://www.google.com/maps/place/27%C2%B039'47.7%22N+83%C2%B027'27.9%22E/@27.663239,83.45775,17z/data=!3m1!4b1!4m4!3m3!8m2!3d27.663239!4d83.45775?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D">Butwal</a></p>
       </div>
 
       <div style="margin-top: 20px;">
