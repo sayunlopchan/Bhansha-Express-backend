@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
-const errorHandler = require('./middleware/errorHandler'); // Create this middleware if needed
-const userRoutes = require('./routes/userRoutes'); // Assuming you have user routes
-const orderRoutes = require('./routes/orderRoutes'); // Assuming you have order routes
-const contactRoutes = require('./routes/contact'); // Assuming you have contact routes
+const errorHandler = require('./middleware/errorHandler');
+const userRoutes = require('./routes/userRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const contactRoutes = require('./routes/contact');
 const imageRoutes = require('./routes/imageRoutes');
 
 dotenv.config();
