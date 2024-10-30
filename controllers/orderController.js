@@ -3,7 +3,7 @@ const Order = require('../models/Order');
 const {
   orderConfirmationTemplate,
   adminOrderNotificationTemplate,
-  shippedTemplate,
+  onDeliveryTemplate,
   deliveredTemplate,
   canceledTemplate,
   onCookingTemplate,
@@ -63,7 +63,7 @@ exports.updateOrderStatus = async (req, res) => {
           break;
         case 'On Delivery':
           subject = `Order ${orderId} - Your Order is on the Way!`;
-          template = shippedTemplate(user, orderId, items, totalPrice, paymentMethod);
+          template = onDeliveryTemplate(user, orderId, items, totalPrice, paymentMethod);
           break;
         case 'Delivery Complete':
           subject = `Order ${orderId} - Your Order Has Been Delivered!`;
