@@ -1,3 +1,5 @@
+const path = require('../constant/path')
+
 const nodemailer = require('nodemailer');
 
 // Utility function to format order details
@@ -33,7 +35,7 @@ const formatOrderDetails = (orderData) => {
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>confirmation email</title>
   </head>
 
   <body
@@ -45,7 +47,7 @@ const formatOrderDetails = (orderData) => {
 
       <div
         style="height: 100px; width: 100px; display: flex; justify-content: center; align-items: center; margin: auto; overflow: hidden; border-radius: 100%;">
-        <img src="https://bhansha-express-backend.onrender.com/api/image/67210b13cf6136f012411478"
+        <img src="${path.LOGO}"
           alt="bhansha express logo" width="100%" height="100%" style="object-fit: cover;">
       </div>
 
@@ -59,7 +61,7 @@ const formatOrderDetails = (orderData) => {
     <div style=" margin: auto; font-size: small; ">
       <div style=" text-align: center; margin: auto; margin-top: 20px; ">
         <span style="text-align: center;">
-          <img src="https://bhansha-express-backend.onrender.com/api/image/6720af404d23b0f2c87b7e5e"
+          <img src="${path.PROGRESS_ICONS.ORDER_CONFIRM}"
             alt="Order Confirmed" style="height: 30px; width: 30px;" />
           <p style="color: blue;">Order Confirmed</p>
         </span>
@@ -67,7 +69,7 @@ const formatOrderDetails = (orderData) => {
         <p>&</p>
 
         <span style="text-align: center;">
-          <img src="https://bhansha-express-backend.onrender.com/api/image/6720af474d23b0f2c87b7e60" alt="Ready to Cook"
+          <img src="${path.PROGRESS_ICONS.READY_TO_COOK}" alt="Ready to Cook"
             style="height: 30px; width: 30px;" />
           <p style="color: red;">Ready to Cook</p>
         </span>
@@ -124,7 +126,7 @@ const formatOrderDetails = (orderData) => {
       <div style="margin-top: 20px;">
         <h5 style="margin: 0px;">Takeout Address</h5>
         <hr>
-        <p style="margin: 0px; font-size: smaller;">Loaction: <a href="https://www.google.com/maps/place/27%C2%B039'47.7%22N+83%C2%B027'27.9%22E/@27.663239,83.45775,17z/data=!3m1!4b1!4m4!3m3!8m2!3d27.663239!4d83.45775?entry=ttu&g_ep=EgoyMDI0MTAyNy4wIKXMDSoASAFQAw%3D%3D">Butwal</a></p>
+        <p style="margin: 0px; font-size: smaller;">Loaction: <a href="${path.GOOGLEMAP}">${path.LOCATION}</a></p>
       </div>
 
       <div style="margin-top: 20px;">
@@ -142,24 +144,24 @@ const formatOrderDetails = (orderData) => {
         <h5 style="text-align: center; margin: 0px;">Connect with us !!</h5>
 
         <div style="margin-top: 10px; text-align: center;">
-          <a href="https://www.instagram.com/bhanshaexpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/67211686cf6136f01241147c" alt="instagram"
+          <a href="${path.INSTAGRAM}" style="display: inline-block; margin: 0 10px;">
+            <img src="${path.INSTAGRAM_ICON}" alt="instagram"
               width="25px">
           </a>
-          <a href="https://www.facebook.com/BhanshaExpress" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672115e4cf6136f01241147a" alt="facebook"
+          <a href="${path.FACEBOOK}" style="display: inline-block; margin: 0 10px;">
+            <img src="${path.FACEBOOK_ICON}" alt="facebook"
               width="25px">
           </a>
-          <a href="https://wa.me/+9779867247262" style="display: inline-block; margin: 0 10px;">
-            <img src="https://bhansha-express-backend.onrender.com/api/image/672116a5cf6136f01241147e" alt="whatsapp"
+          <a href="${path.WHATSAPP}" style="display: inline-block; margin: 0 10px;">
+            <img src="${path.WHATSAPP_ICON}" alt="whatsapp"
               width="25px">
           </a>
         </div>
       </div>
 
 
-      <a href="https://www.bhanshaexpress.com">
-        <img src="https://bhansha-express-backend.onrender.com/api/image/671f7c6b1139c9d43848a9d8"
+      <a href="${path.BASEURL}">
+        <img src="${path.BANNER}"
           alt="bhansha express offer banner" width="100%" height="100%" style="border-radius: 20px;">
       </a>
 
