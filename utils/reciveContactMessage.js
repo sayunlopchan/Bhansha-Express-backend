@@ -21,7 +21,7 @@ const receiveContactMessage = async (contactData) => {
     // Email content for the admin
     const contactMailOptions = {
       from: process.env.EMAIL,
-      to: process.env.ADMIN_EMAIL || process.env.EMAIL,
+      to: process.env.EMAIL,
       subject: `New Contact Message from ${firstname} ${lastname}`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
