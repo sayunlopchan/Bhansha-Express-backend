@@ -28,18 +28,7 @@ const formatOrderDetails = (orderData) => {
 
   // Construct the final order details string for the user with the banner image
   const orderDetailsForUser = `
- 
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>confirmation email</title>
-  </head>
-
-  <body
-    style="font-family: Arial, sans-serif; background-color: white;  max-width: 600px; min-width: 300px; margin: auto; padding: 10px;">
+  <div style="font-family: Arial, sans-serif; background-color: white;  max-width: 600px; min-width: 300px; margin: auto; padding: 10px;">
 
     
 
@@ -173,10 +162,10 @@ const formatOrderDetails = (orderData) => {
       <p style="font-size: smaller; text-align: center; color: #888;">© 2024 All Rights Reserved.</p>
     </footer>
 
-  </body>
+  </div>
 
 
-</html>
+
 `;
 
   return { orderDetailsForUser: orderDetailsForUser.trim() };

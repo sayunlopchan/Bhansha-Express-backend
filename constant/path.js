@@ -3,15 +3,9 @@ require('dotenv').config();
 // Base API for Website 
 const BASEURL = process.env.BASEURL || 'http://localhost:5000';
 
-// Common Paths
-const IMAGE_PATH = `${BASEURL}/assets/email`;
-
-// Helper function for image URLs
-const getImageUrl = (name) => `${IMAGE_PATH}/${name}`;
-
 // Assets 
-const LOGO = getImageUrl("logo.png");
-const BANNER = getImageUrl("banner.png");
+const LOGO = "https://bhanshaexpress.com/assets/email/logo.jpg";
+const BANNER = "https://bhanshaexpress.com/assets/email/banner.png";
 
 // Social Media Links
 const INSTAGRAM = "https://www.instagram.com/bhanshaexpress";
@@ -23,27 +17,26 @@ const GOOGLEMAP = "https://maps.app.goo.gl/13bcbjHbvk8z7TeC7";
 const LOCATION = "Butwal";
 
 // Social Media Icons
-const INSTAGRAM_ICON = getImageUrl("instagram.png");
-const FACEBOOK_ICON = getImageUrl("facebook.png");
-const WHATSAPP_ICON = getImageUrl("whatsapp.png");
+const INSTAGRAM_ICON = "https://bhanshaexpress.com/assets/email/instagram.png";
+const FACEBOOK_ICON = "https://bhanshaexpress.com/assets/email/facebook.png";
+const WHATSAPP_ICON = "https://bhanshaexpress.com/assets/email/whatsapp.png";
 
 // Status Images
 const STATUS_IMAGES = {
-  ON_DELIVERY: getImageUrl("shipping.png"),
-  DELIVERED: getImageUrl("complete.png"),
-  CANCELED: getImageUrl("cancelled.png"),
+  ON_DELIVERY: "https://bhanshaexpress.com/assets/email/shipping.jpg",
+  DELIVERED: "https://bhanshaexpress.com/assets/email/complete.png",
+  CANCELED: "https://bhanshaexpress.com/assets/email/cancelled.png",
 };
 
 // Progress Icon Images
 const PROGRESS_ICONS = {
-  READY_TO_COOK: getImageUrl("cooking.png"),
-  ORDER_CONFIRM: getImageUrl("confirmation.png"),
+  READY_TO_COOK: "https://bhanshaexpress.com/assets/email/cooking.png",
+  ORDER_CONFIRM: "https://bhanshaexpress.com/assets/email/confirmation.png",
 };
 
 // Export the configuration
 module.exports = {
   BASEURL,
-  IMAGE_PATH,
   LOGO,
   BANNER,
   INSTAGRAM,
